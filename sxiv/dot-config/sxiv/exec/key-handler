@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#  ______  _______     __
+# / ___\ \/ /_ _\ \   / /
+# \___ \\  / | | \ \ / /
+#  ___) /  \ | |  \ V /
+# |____/_/\_\___|  \_/
+
+# Fecha: 2024-03-04
+# Autor: Franklin Cedeño
+
+#======================================== Scripts
+
+while read file
+do
+    case "$1" in
+		  "d") trash-put "$file" ;;
+      "w") exec $(set-fondo $file);;
+    esac
+done
