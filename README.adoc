@@ -64,7 +64,7 @@ mkdir ~/.local/share/{themes,icons,fonts}
 *Instalación de Nerd Fonts*
 
 * Puedes descargar cualquiera desde https://www.nerdfonts.com/["Nerd Fonts",window=read-later] y luego instalarla en tu sistema.
-* Copia los archivos .ttf a `~/.local/share/fonts/` y ejecuta `fc-cache -fv`.
+* Copia los directorios `JetBrainsMono` y `FontAwesome6` a `~/.local/share/fonts/` y ejecuta `fc-cache -fv`.
 
 === *Temas*
 
