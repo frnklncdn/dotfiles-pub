@@ -77,14 +77,14 @@ mkdir ~/.local/share/{themes,icons,fonts}
 [source,bash]
 ----
 cd ~/Descargas
-tar -xvf 03-Flat-Remix-GTK-Black-20240730.tar.xz
+tar -xvf 01-Flat-Remix-GTK-Blue-20240730.tar.xz
 ----
 
 * Instalar
 +
 [source,bash]
 ----
-mv Flat-Remix-Dark-XFWM ~/.local/share/themes/
+mv Flat-Remix-GTK-Blue-Dark ~/.local/share/themes/
 ----
 
 === *Iconos*
