@@ -1,0 +1,24 @@
+# Default settings for user directories
+#
+# The values are relative pathnames from the home directory and
+# will be translated on a per-path-element basis into the users locale
+
+#XDG_DESKTOP_DIR="/mnt/sda2/Desktop"
+XDG_DESKTOP_DIR="$HOME/Escritorio"
+XDG_DOWNLOAD_DIR="$HOME/Descargas"
+XDG_YO_DIR="$HOME/1_yo"
+XDG_PROFESION_DIR="$HOME/2_profesion"
+XDG_EDUCACION_DIR="$HOME/3_educacion"
+XDG_FINANZAS_DIR="$HOME/4_finanzas"
+XDG_PROYECTO_DIR="$HOME/5_proyectos"
+XDG_HOST_DIR="$HOME/6_host"
+XDG_AFECTIVO_DIR="$HOME/7_afectivo"
+XDG_OCIO_DIR="$HOME/8_ocio"
+XDG_BIBLIOTECA_DIR="$HOME/9_biblioteca"
+#XDG_TEMPLATES_DIR="$HOME/"
+#XDG_PUBLICSHARE_DIR="$HOME/"
+#XDG_DOCUMENTS_DIR="$HOME/Documentos"
+#XDG_MUSIC_DIR="$HOME/8-MULTIMEDIA/Música"
+#XDG_PICTURES_DIR="$HOME/8-MULTIMEDIA/Imágenes"
+#XDG_VIDEOS_DIR="$HOME/8-MULTIMEDIA/Videos"
+
