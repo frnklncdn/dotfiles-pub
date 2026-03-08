@@ -1,0 +1,174 @@
+#      _                 _
+#   __| |_   _ _ __  ___| |_ _ __ ___
+#  / _` | | | | '_ \/ __| __| '__/ __|
+# | (_| | |_| | | | \__ \ |_| | | (__
+#  \__,_|\__,_|_| |_|___/\__|_|  \___|
+
+
+[global]
+#========================================   DISPLAY
+
+    follow = keyboard
+
+#========================================   GEOMETRY
+
+    width = 300
+    height = (0, 300)
+    origin = top-right
+    offset = (5,30)
+    scale = 0
+    notification_limit = 20
+
+#========================================   PROGRESS BAR
+
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    progress_bar_corner_radius = 5
+    progress_bar_corners = all
+    icon_corner_radius = 0
+    icon_corners = all
+    indicate_hidden = yes
+    transparency = 0
+    separator_height = 2
+    padding = 8
+    horizontal_padding = 8
+    text_icon_padding = 20
+    frame_width = 2
+    frame_color = "#939393"
+    gap_size = 3
+    separator_color = frame
+    sort = yes
+    highlight = "#ffffff"
+
+#========================================   TEXT
+
+    font = JetBrainsMonoNerdFont 12
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+
+#========================================   ICONS
+
+    enable_recursive_icon_lookup = true
+    icon_theme = Adwaita
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 128
+    icon_path = /home/fenix/.local/share/icons/status/:/usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    sticky_history = yes
+    history_length = 20
+
+#========================================   MISC/ADVANCED
+
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/xdg-open
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    corner_radius = 1
+    corners = all
+    ignore_dbusclose = false
+
+#========================================   WAYLAND
+
+    force_xwayland = false
+
+#========================================   LEGACY
+
+    force_xinerama = false
+
+#========================================   MOUSE
+
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+#======================================== 󰙨  EXPERIMENTAL
+
+[experimental]
+    per_monitor_dpi = false
+
+#========================================   NOTIFICACIONES
+
+[urgency_low]
+    #background = "#24283b"
+    background = "#181825"
+    foreground = "#a9b1d6"
+    frame_color = "#444B6A"
+    highlight = "#5bb1b4"
+    timeout = 5
+    format = "<span foreground='#5bb1b4'><b>%s</b></span>\n%b"
+    #default_icon = $HOME/.local/share/icons/status/notification-symbolic.svg
+
+[urgency_normal]
+    background = "#181825"
+    foreground = "#a9b1d6"
+    frame_color = "#7aa2f7"
+    highlight = "#5bb1b4"
+    timeout = 5
+    format = "<span foreground='#5bb1b4'><b>%s</b></span>\n%b"
+    #default_icon = $HOME/.local/share/icons/status/dialog-information-symbolic.svg
+
+[urgency_critical]
+    #background = "#900000"
+    background = "#181825"
+    frame_color = "#ff0000"
+    highlight = "#5bb1b4"
+    timeout = 0
+    format = "<span foreground='#5bb1b4'><b>%s</b></span>\n%b"
+    #default_icon = $HOME/.local/share/icons/status/dialog-warning-symbolic.svg
+
+#========================================   IGNORAR
+
+#[ignore]
+#    # This notification will not be displayed
+#    summary = "foobar"
+#    skip_display = true
+
+[history-ignore]
+    history_ignore = yes
+    appname = Volumen
+    appname = Brillo
+    appname = Mayus
+    appname = Hora
+
+#======================================== APPS
+
+[volume]
+    appname = "Volumen"
+    alignment = center
+
+[mayus]
+    appname = "Mayus"
+    alignment = center
+    min_icon_size = 64
+
+[brillo]
+    appname = "Brillo"
+    alignment = center
+
+[hora]
+    appname = "Hora"
+    alignment = center
+    min_icon_size = 64
+
+[calendario]
+    appname = "Calendario"
+    alignment = center
+    min_icon_size = 64
+
+[wall]
+    appname = "Wall"
+    alignment = center
+
