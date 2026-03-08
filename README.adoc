@@ -73,6 +73,7 @@ mkdir ~/.local/share/{themes,icons,fonts}
 ----
 
 . Descargar iconos (Flat Remix ICON theme)
++
 image::{img}img-iconos.png[]
 +
 [source,bash]
