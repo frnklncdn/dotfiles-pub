@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#Fecha: 2025-04-30
+#Autor: Prof. Fraklin Cedeño Cocho
+#Descripción:
+
+set -e
+
+#======================================== FUNCIONES
+
+main() {
+  readonly OPCIONES=$(printf '%s\n' " PC" " TV" "  Dual" " Clon")
+  readonly OPCION=$(printf "$OPCIONES" | dmenu -p "󰍹 Monitor:" -l 6 -nb "#181825" -sb "#7aa0f5" -fn "FontAwesome-38" -sf "#000000" -c)
+
+  case "$OPCION" in
+    " PC") xrandr --output eDP-1 --primary --mode 1366x768 --output HDMI-1 --off & ;;
+    " TV") xrandr --output HDMI-1 --primary --auto --output eDP-1 --off & ;;
+    "  Dual") xrandr --output eDP-1 --primary --mode 1366x768 --output HDMI-1 --mode 1366x768 --right-of eDP-1 & ;;
+    " Clon") xrandr --output HDMI-1 --mode 1280x720 --output eDP-1 --mode 1280x720 --output HDMI-1 --same-as eDP-1 & ;;
+  esac
+}
+
+#======================================== MAIN
+
+main
+

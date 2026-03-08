@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Fecha: 2024-07-24
+# Autor: Franklin Cedeño Cocho
+# Descripción: Cambia el wallpaper desde dmenu o la terminal
+
+set -e
+
+#======================================== DEFAULTS
+
+# Directorios
+readonly imagenes="$HOME/.local/share/wallpapers/static/"
+readonly papel_tapiz="$HOME/.config/wall.png"
+
+#======================================== FUNCIONES
+
+main() {
+    local opcion=$1
+
+    # Obtener wallpaper
+    case "$opcion" in
+
+        "w")
+            imagen=$(find $imagenes -type f | sort | dmenu -p " Wallpaper: " -l 10 -nb "#181825" -sb "#7aa0f5" -fn "FontAwesome-24" -sf "#000000" -c) || exit 0
+        ;;
+        "")
+            imagen=$(find $imagenes -type f | fzf) || exit 0
+        ;;
+        *)
+            [ -f "$1" ] &&  imagen=$opcion
+        ;;
+    esac
+
+    # Actualizar wallpaper
+    ln -s $imagen $papel_tapiz -f && xwallpaper --maximize $papel_tapiz &&
+    dunstify -a "Wall" -i "$papel_tapiz" "Wallpaper"
+}
+
+#======================================== MAIN
+
+main $1

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#Fecha: 2025-05-18
+#Autor: Prof. Fraklin Cedeño Cocho
+#Descripción: Muestra la hora en una notificación de dunst
+
+set -e
+
+#======================================== MAIN
+
+hora=$(date +%H:%M)
+readonly icon="$HOME/.local/share/icons/status/emoji-recent-symbolic.svg"
+
+dunstify -a "Hora" -i "$icon" "$hora" -r 9824 -t 5000
+

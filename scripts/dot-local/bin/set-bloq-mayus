@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Fecha: 2025-04-29
+# Autor: Prof. Fraklin Cedeño Cocho
+# Descripción: Cambia el teclado entre mayúscula/minúscula.
+
+set -e
+
+#======================================== FUNCIONES
+
+main() {
+    readonly ICONDIR="$HOME/.local/share/icons/status/"
+
+    sleep 0.3
+
+    local estado=$(\cat /sys/class/leds/input*capslock/brightness)
+
+    [[ $estado == 1 ]] && title="ABC" && icon="capslock-enabled-symbolic.svg"
+    [[ $estado == 0 ]] && title="abc" && icon="capslock-disabled-symbolic.svg"
+
+    dunstify -a "Mayus" -i "$ICONDIR/$icon" "$title" -r 9824 -t 1500
+}
+
+#======================================== MAIN
+
+main
+
+

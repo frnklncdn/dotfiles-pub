@@ -1,0 +1,63 @@
+#!/bin/bash
+
+#Fecha: 2025-04-26
+#Autor: Prof. Fraklin Cedeño Cocho
+#Descripción:
+
+set -e
+
+#======================================== DEFAULTS
+
+readonly OPCION=$1
+
+#======================================== FUNCIONES
+
+brillo()
+{
+    readonly BRILLO_MAX=2.0
+    readonly BRILLO_MIN=0.1
+    readonly SALTO=0.1
+
+    # Obtener brillo
+    brillo_actual=$(xrandr --current --verbose | grep Brightness | awk 'NR==1{print $2}')
+
+    readonly PASO_MAX=$(bc <<< "$brillo_actual < $BRILLO_MAX")
+    readonly PASO_MIN=$(bc <<< "$brillo_actual > $BRILLO_MIN")
+
+    case $OPCION in
+        "+") [ "$PASO_MAX" -eq 1 ] && brillo_actual=$(bc <<< "scale=0; $brillo_actual + $SALTO");;
+        "-") [ "$PASO_MIN" -eq 1 ] && brillo_actual=$(bc <<< "scale=0; $brillo_actual - $SALTO");;
+    esac
+
+    # Obtener monitores
+    readonly MONITOR0=$(xrandr | grep eDP-1 | awk '{print $2}')
+    readonly HDMI1=$(xrandr | grep HDMI-1 | awk '{print $2}')
+
+    # Aumentar/Disminuir brillo de pantallas
+    [ "$MONITOR0" == "connected" ] && xrandr --output eDP-1 --brightness $brillo_actual 2> /dev/null || return 0
+    [ "$HDMI1" == "connected" ] && xrandr --output HDMI-1 --brightness $brillo_actual 2> /dev/null || return 0
+}
+
+notificacion()
+{
+    readonly ICONDIR="$HOME/.local/share/icons/status"
+    readonly BARRA=$(bc <<< "scale=0; $brillo_actual * 100/2")
+
+    [ "$BARRA" -gt 0 ] && [ "$BARRA" -le 25 ] && ICONO="󰃞"
+    [ "$BARRA" -gt 25 ] && [ "$BARRA" -le 50 ] && ICONO="󰃟"
+    [ "$BARRA" -gt 50 ] && [ "$BARRA" -lt 90 ] && ICONO="󰃝"
+    [ "$BARRA" -ge 90 ] && [ "$BARRA" -le 100 ] && ICONO="󰃠"
+    [ "$BARRA" -eq 0 ] && ICONO="display-brightness-off-symbolic.svg"
+
+    dunstify -a "Brillo" "$ICONO $BARRA%" -h int:value:$BARRA -r 9994 -t 1000
+}
+
+main() {
+    brillo
+    notificacion
+}
+
+#======================================== MAIN
+
+main
+

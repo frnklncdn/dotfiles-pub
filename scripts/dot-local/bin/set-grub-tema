@@ -1,0 +1,114 @@
+#!/bin/bash
+
+# Fecha: "2025-07-06"
+# Autor: Prof. Franklin Cedeño Cocho
+# Descripción:
+
+set -euo pipefail
+
+#======================================== FUNCIONES
+
+verificar_dependencias() {
+	FUENTES=(
+    	"${HOME}/.local/bin/lib_msg.sh"
+	)
+
+	for FUENTE in "${FUENTES[@]}"; do
+   		[ ! -f "${FUENTE}" ] && echo "Dependencia: '"${FUENTE}"' no existe!" && return 1 ||  source ${FUENTE}
+	done
+}
+
+configurar_grub() {
+
+    readonly LINEA1="GRUB_TIMEOUT_STYLE=hiden"
+    readonly LINEA2="GRUB_THEME=/boot/grub/themes/debian/theme.txt"
+    readonly GRUB_CONF="/etc/default/grub"
+
+    sudo sed 's/$LINEA1/# GRUB_TIMEOUT_STYLE=hiden/g' $GRUB_CONF
+
+    if ! grep -q "$LINEA2" "$GRUB_CONF"; then
+        sudo sed -i '$a GRUB_THEME=/boot/grub/themes/debian/theme.txt' $GRUB_CONF
+        # Actualizar grub
+        sudo update-grub
+    else
+		printf "\n" && read -s -p "$(notificacion "SUCESO" "Archivo grub, ya está configurado!")"
+    fi
+}
+
+actualizar_tema_grub() {
+    SISTEMA=$(hostname)
+    USUARIO="$HOME/6_host/temas/themes_grub/"
+    TEMA_DIRECTORIO="/boot/grub/themes"
+    TEMA=''
+
+    # Seleccionar tema
+    case $SISTEMA in
+    acer) TEMA='acer';;
+    asus) TEMA='asus';;
+    hp) TEMA='hp';;
+    *) TEMA='debian';;
+    esac
+
+    readonly TEMA_NUEVO_RUTA="$USUARIO$TEMA"
+
+    # Copiar tema
+    [[ ! -d "$TEMA_DIRECTORIO" ]] \
+		&& sudo mkdir -p "$TEMA_DIRECTORIO" \
+        && echo "Directorio '$TEMA_DIRECTORIO' creado." \
+		|| read -p "$(notificacion "AVISO" "Directorio '$TEMA_DIRECTORIO' ya existe.")"
+	sudo cp -rf $TEMA_NUEVO_RUTA $TEMA_DIRECTORIO \
+
+    configurar_grub
+}
+
+grub_tui() {
+	local FECHA=$(date +'%Y-%m-%d')
+	BANNER="FENIX"
+	INFO=( "# Fecha: ${FECHA}" "# Autor: Prof. Franklin Cedeño Cocho" "# Descripción: Reproducir sistema")
+	BARRA=("q | Salir" "v | Volver")
+	MENU=( "Actualizar el tema")
+
+	imprimir_banner "${BANNER}"
+	imprimir_info "${INFO[@]}"
+	imprimir_barra "${BARRA[@]}"
+	imprimir_menu  "${MENU[@]}"
+	notificacion "SUCESO" "OK\n"
+}
+
+grub_opcion() {
+	local OPCION=$1
+
+	case "${OPCION}" in
+		1)
+			actualizar_tema_grub
+			;;
+		v)
+			VOLVER=false
+			;;
+		q)
+			exit 0
+			;;
+		*) 
+			read -s -p "$(notificacion "INFO") $(estado "INVALIDO")"
+			echo 0
+			;; 
+	esac
+}
+
+grub_tema() {
+	verificar_dependencias
+	ESTADO_SALIDA=$?
+	[ "${ESTADO_SALIDA}" -ne 0 ] && exit 0
+
+	while [ $VOLVER == true ]; do
+		clear # Limpiar pantalla
+		grub_tui
+		read -p ">>> " OPCION
+		grub_opcion "$OPCION"
+	done
+}
+
+#==================== MAIN
+
+VOLVER=true
+grub_tema

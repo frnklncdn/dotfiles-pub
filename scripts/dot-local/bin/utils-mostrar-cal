@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#Fecha: 2025-11-02
+#Autor: Prof. Franklin Cedeño Cocho
+#Descripción: Muestra el calendario en una notificación de dunst
+
+set -e
+
+#======================================== MAIN
+
+app_cal=$( if ! cal; then echo "Calendario no instalado!"; fi )
+
+dunstify -a "Calendario" "Calendario" "\n${app_cal}" -r 9825 -t 5000
+

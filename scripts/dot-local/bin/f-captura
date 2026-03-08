@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#Fecha: 2025-04-29
+#Autor: Prof. Fraklin Cedeño Cocho
+#Descripción:
+
+set -e
+
+#======================================== DEFAULT
+
+readonly OPCION=$1
+
+#======================================== FUNCIONES
+
+main()
+{
+    readonly IMG_RUTA="$HOME/9-biblioteca/capturas/"
+    readonly IMG_NOMBRE="cap_$(date +"%Y-%m-%d-%H-%M-%S").png"
+
+    img_out="${IMG_RUTA}${IMG_NOMBRE}"
+
+    case ${OPCION} in
+      "p") import -window root $img_out ;;
+      "s") import $img_out ;;
+    esac
+    return 0
+}
+
+notificacion()
+{
+    dunstify -i "$img_out" "Catptura! " -t 2000
+    return 0
+}
+
+#======================================== MAIN
+
+main
+notificacion

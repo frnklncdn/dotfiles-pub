@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#Fecha: 2025-04-13
+#Autor: Prof. Fraklin Cedeño Cocho
+#Descripción: Notificación de volumen
+
+set -e
+
+#======================================== MAIN
+
+main()
+{
+	readonly accion=$1
+
+	# Cambiar volumen
+    amixer set Master $accion
+
+    # Obtener volumen
+    readonly volumen_actual=$(amixer get Master | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1)
+    readonly mute=$(amixer get Master | grep '%' | awk -F'[][]' '/Left/ { print $4 }')
+
+    # Mensaje
+    [ "$volumen_actual" -ge 90 ] && [ "$volumen_actual" -le 100 ] && icono=''
+    [ "$volumen_actual" -gt 25 ] && [ "$volumen_actual" -lt 90 ] && icono=''
+    [ "$volumen_actual" -gt 0 ] && [ "$volumen_actual" -le 25 ] && icono=''
+    [ "$volumen_actual" -eq 0 ] || [ "$mute" = "off" ] && icono='󰖁'
+
+    dunstify -a "Volumen" "${icono} ${volumen_actual}%" -h int:value:${volumen_actual} -r 9823 -t 2000
+}
+
+main $1
