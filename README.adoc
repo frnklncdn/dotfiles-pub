@@ -64,6 +64,13 @@ mkdir ~/.local/share/{themes,icons,fonts}
 *Instalación de Nerd Fonts*
 
 * Puedes descargar cualquiera desde https://www.nerdfonts.com/["Nerd Fonts",window=read-later] y luego instalarla en tu sistema.
+
+* Descomprimir
+[source,bash]
+----
+mkdir JetBrainsMono
+unzip JetBrainsMono.zip -d JetBrainsMono
+----
 * Copia los directorios `JetBrainsMono` y `FontAwesome6` a `~/.local/share/fonts/` y ejecuta `fc-cache -fv`.
 
 === *Temas*
