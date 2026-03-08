@@ -51,3 +51,31 @@ cd ~/.dotfiles && stow */
 * kbd:[Mod + Enter] Abrir terminal
 * kbd:[Mod + R] Reiniciar WM
 
+==  *Apariencia*
+
+. Crear directorio de temas
++
+[source,bash]
+----
+mkdir ~/.local/share/{themes,icons,fonts}
+----
+
+. Descargar fuentes
++
+[source,bash]
+----
+----
+
+. Descargar tema
++
+[source,bash]
+----
+----
+
+. Descargar iconos (Flat Remix ICON theme)
+image::{img}img-iconos.png[]
++
+[source,bash]
+----
+https://www.xfce-look.org/p/1012430
+----
