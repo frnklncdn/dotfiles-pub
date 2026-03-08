@@ -1,0 +1,77 @@
+#!/bin/sh
+
+# /etc/X11/xinit/xinitrc
+#. /etc/X11/Xsession
+
+# __  _____ _   _ ___ _____
+# \ \/ /_ _| \ | |_ _|_   _|
+#  \  / | ||  \| || |  | |
+#  /  \ | || |\  || |  | |
+# /_/\_\___|_| \_|___| |_|
+
+
+#========================================  DOS MONITORES
+
+case $(hostname) in
+	f-acer)	xrandr --output eDP-1 --primary --mode 1366x768 --output HDMI-1 --mode 1366x768 --right-of eDP-1 & 		;;
+	f-asus)	xrandr --output HDMI-A-0 --auto &	;;
+  deb) autorandr ;;
+esac
+
+#========================================  COMPOSITOR
+
+picom --config $HOME/.config/picom/picom.conf &
+
+#========================================  NOTIFICACIONES
+
+exec dunst &
+
+#======================================== ATAJOS DE TECLADO
+
+#pgrep -x sxhkd > /dev/null || sxhkd &
+sxhkd &
+
+#======================================== BARRA DE ESTADO
+
+
+#========================================  WALLPAPER
+
+xwallpaper --zoom $HOME/.config/wall.png &
+#~/.local/bin/scripts/wpMovil.sh &
+
+#========================================  AGENTE SSH
+
+eval "$(ssh-agent)"
+
+#========================================  PANTALLA
+
+#[[ -f ~/.Xresources ]] && xrdb -merge -I $HOME/.config/X11/Xresources
+xset -dpms s off
+
+#========================================  POLKIT
+
+#/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
+#========================================  LANZAR
+
+emacs --daemon &
+kdeconnectd &
+exec --no-startup-id lxpolkit &
+xsetroot -cursor_name "left_ptr" &
+
+#========================================  WM 
+
+case "$wm_tipo" in
+	"xmonad")
+			xmobar &
+			exec xmonad
+		;;
+	"dwm") 
+			exec slstatus &
+			while true; do
+				dwm >/dev/null 2>&1
+			done
+		;;
+
+esac
+
