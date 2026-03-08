@@ -51,7 +51,7 @@ cd ~/.dotfiles && stow */
 * kbd:[Mod + Enter] Abrir terminal
 * kbd:[Mod + R] Reiniciar WM
 
-==  *Apariencia*
+== 🎨 *Apariencia*
 
 . Crear directorio de temas
 +
@@ -72,9 +72,7 @@ mkdir ~/.local/share/{themes,icons,fonts}
 ----
 ----
 
-. Descargar iconos (Flat Remix ICON theme)
-+
-image:{img}img-iconos.png[]
+. image:{img}img-iconos.png[] Descargar iconos (Flat Remix ICON theme)
 +
 [source,bash]
 ----
