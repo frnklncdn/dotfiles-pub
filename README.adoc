@@ -60,21 +60,25 @@ cd ~/.dotfiles && stow */
 mkdir ~/.local/share/{themes,icons,fonts}
 ----
 
-. Descargar fuentes
+. Instalar fuentes
 +
 [source,bash]
 ----
 ----
 
-. Descargar tema
+. Instalar tema
 +
 [source,bash]
 ----
 ----
 
-. image:{img}img-iconos.png[] Descargar iconos (Flat Remix ICON theme)
+. Instalar iconos (Flat Remix ICON theme)
 +
 [source,bash]
 ----
 https://www.xfce-look.org/p/1012430
+----
+
+[source,bash]
+----
 ----
