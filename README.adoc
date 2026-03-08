@@ -40,7 +40,6 @@ Mis configuraciones personales para mi entorno de desarrollo, basadas en Linux/m
 ----
 git clone https://github.com/frnklncdn/dotfiles-pub.git ~/.dotfiles
 ----
- `git clone https://github.com/usuario/dotfiles.git ~/.dotfiles`
 . Instalar con GNU Stow:
 +
 [source, sh]
