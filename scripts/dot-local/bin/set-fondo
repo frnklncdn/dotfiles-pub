@@ -9,7 +9,7 @@ set -e
 #======================================== DEFAULTS
 
 # Directorios
-readonly imagenes="$HOME/.local/share/wallpapers/static/"
+readonly imagenes="$HOME/.local/share/wallpapers/"
 readonly papel_tapiz="$HOME/.config/wall.png"
 
 #======================================== FUNCIONES
