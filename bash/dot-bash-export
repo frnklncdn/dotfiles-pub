@@ -1,0 +1,20 @@
+#===================================== Export
+
+export EDITOR="emacsclient -a"
+export VISUAL="emacsclient -c"
+export XDG_HOME="${HOME}"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE="$HOME/.local/state"
+export INPUTRC="$HOME/.config/inputrc"
+export FZF_COMPLETION_TRIGGER='**'
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
+export MANPAGER="less"
+export WINEARCH=win32
+export LC_ALL="es_VE.UTF-8"
+#export LANG="es_ES.UTF-8"
+#export LANGUAGE="es_ES:es"
+#export wm_tipo="dwm"
+export wm_tipo="xmonad"

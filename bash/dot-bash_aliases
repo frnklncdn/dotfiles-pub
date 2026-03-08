@@ -1,0 +1,124 @@
+#     _    _ _
+#    / \  | (_) __ _ ___
+#   / _ \ | | |/ _` / __|
+#  / ___ \| | | (_| \__ \
+# /_/   \_\_|_|\__,_|___/
+
+# Fecha: 2024-02-18
+# Autor: Prof. Franklin Cedeño Cocho
+# Descripción: Mis alias
+
+#=====================================   CMD BÁSICOS
+
+alias mv='mv -iv'
+alias cp='cp -riv'
+
+#=====================================  LISTAR
+
+alias l='lsd --group-directories-first'
+alias ll='lsd -l'
+alias la='lsd -a'
+alias lA='lsd -A'
+alias lla='lsd -la'
+alias llA='lsd -lA'
+alias lt='lsd --tree'
+
+#=====================================   DIRECTORIOS
+
+alias -- -='echo "cd - : "; cd -'
+alias ..='echo "cd ../"; cd ..'
+alias 2..='echo "cd ../../"; cd ../../'
+alias 3..='echo "cd ../../../"; cd ../../../'
+alias 4..='echo "cd ../../../../"; cd ../../../../'
+alias cdc='c; cd'
+alias cdl='fcd() {( cd "$1" && ls ); }; fcd'
+alias fcd='cd $(find $HOME -type d -or -type l 2>/dev/null | fzf --height 40% --reverse --preview "ls -la --color=always {}") && c'
+alias rmd='trash-put'
+alias mkdir='mkdir -vp'
+alias mkcd='mkcd_alias() { mkdir -p "$1" && cd "$1"; }; mkcd_alias'
+
+#=====================================  ARCHIVOS
+
+alias bat='batcat --color=always'
+alias diff='diff --color=auto'
+alias ver='file=$(find $HOME -type f | sort | fzf --preview "batcat --color=always {}"); [ ! -z $file ] && batcat --color=always $file; 2>/dev/null'
+alias abrir='find $HOME -type f | sort | fzf --preview "batcat --color=always {}" | xargs -r emacsclient -t'
+
+#=====================================  BUSCAR
+
+alias grep='grep --color=auto -i '
+alias ruta="find -type f | fzf | sed 's/^..//g' | tr -d '\n' | xclip -selection c"
+
+#===================================== 󰋊 DISCOS/SISTEMA DE ARCHVOS
+
+alias df='df -h'
+alias du.='du -sh * 2>/dev/null'
+alias du='du -sh 2>/dev/null'
+
+ #===================================== 󰅇 CLIPBOARD
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
+#=====================================  TERMINAL
+
+alias c='printf "\e[H\e[2J"'
+#alias c='printf "\033c"'
+
+#=====================================  INFO
+
+alias fecha='date +"%Y-%m-%d"'
+alias hora='date +"%T"'
+alias clima="curl wttr.in"
+alias path='echo -e ${PATH//:/\\n}'
+alias genv='printenv | grep'
+
+#=====================================  APT
+
+alias aptl='sudo apt update'
+alias apti='sudo apt install -y '
+alias aptu='sudo apt upgrade -y'
+alias aptU='sudo apt update && sudo apt upgrade -y'
+
+#=====================================  OTROS
+
+alias stowd='stow --dotfiles'
+alias stowk='stow -D'
+#alias vn="fzf -m --preview 'batcat --style=numbers --color=always {}' | xargs nvim"
+#alias vm="fzf -m --preview 'batcat --style=numbers --color=always {}' | xargs -o vim"
+alias wget="wget --hsts-file="$XDG_CACHE_HOME/wget-hsts""
+
+#alias vn='file=$(fzf -m --preview="batcat --color=always {}"); [ ! -z $file ] && nvim $file; 2>/dev/null'
+#alias vim='vim $(fzf -m --preview="batcat --color=always {}")'
+#alias nvim='env -u VIMINIT nvim'
+
+#===================================== 󰊢 GIT
+
+alias gs="git status --short"
+alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
+alias ga="git add"
+alias gc="git commit"
+alias gp="git push"
+alias gu="git pull"
+alias gl="git log"
+alias gb="git branch"
+alias gi="git init"
+alias gcl="git clone"
+alias ghub='ssh-add "$HOME"/.config/ssh/github_id_ed25519'
+alias dotfiles="/usr/bin/git --git-dir=/home/fenix/.cfg/ --work-tree=/home/fenix"
+
+#===================================== 󰊢 BARE
+
+alias bare='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias bgs="bare status --short"
+alias bga="bare add"
+alias bgc="bare commit"
+alias bgp="bare push"
+alias bgu="bare pull"
+alias bgl="bare log"
+
+#===================================== MULTIMEDIA
+
+#alias mocp="mocp -M "$XDG_CONFIG_HOME"/moc"
+alias mocp="mocp -O MOCDir="$XDG_CONFIG_HOME"/moc"
+

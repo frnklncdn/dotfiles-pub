@@ -1,0 +1,27 @@
+#                   __ _ _
+#  _ __  _ __ ___  / _(_) | ___
+# | '_ \| '__/ _ \| |_| | |/ _ \
+# | |_) | | | (_) |  _| | |  __/
+# | .__/|_|  \___/|_| |_|_|\___|
+# |_|
+
+# Fecha: 2025-04-11
+# Autor: Franklin Cedeño Cocho
+# Descripción: Se ejecuta después de login.
+
+#===================================== BASHRC
+
+# Si existe ejecuta bashrc
+[ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
+
+# Incluye al PATH bin privado del usuario si existe
+[ -d "$HOME/.local/bin" ] && PATH="$PATH:$HOME/.local/bin/"
+
+#===================================== STARTX
+
+[ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && exec startx
+
+#case "$(tty)" in
+#   /dev/tty1) exec startplasma-wayland ;;
+#   /dev/tty2) exec startx
+#esac
