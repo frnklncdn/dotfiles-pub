@@ -33,10 +33,20 @@ Mis configuraciones personales para mi entorno de desarrollo, basadas en Linux/m
 * *WM:* xmonad
 
 == 📦 *Instalación*
-1. Clonar el repositorio:
-   `git clone https://github.com/usuario/dotfiles.git ~/.dotfiles`
-2. Instalar con GNU Stow:
-   `cd ~/.dotfiles && stow */`
+
+. Clonar el repositorio:
++
+[source, sh]
+----
+git clone https://github.com/frnklncdn/dotfiles-pub.git ~/.dotfiles
+----
+ `git clone https://github.com/usuario/dotfiles.git ~/.dotfiles`
+. Instalar con GNU Stow:
++
+[source, sh]
+----
+cd ~/.dotfiles && stow */
+----
 
 == ⌨️ *Atajos Clave*
 * kbd:[Mod + Enter] Abrir terminal
