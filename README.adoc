@@ -36,13 +36,13 @@ Mis configuraciones personales para mi entorno de desarrollo, basadas en Linux/m
 
 . Clonar el repositorio:
 +
-[source, sh]
+[source, bash]
 ----
 git clone https://github.com/frnklncdn/dotfiles-pub.git ~/.dotfiles
 ----
 . Instalar con GNU Stow:
 +
-[source, sh]
+[source, bash]
 ----
 cd ~/.dotfiles && stow */
 ----
@@ -53,32 +53,57 @@ cd ~/.dotfiles && stow */
 
 == 🎨 *Apariencia*
 
-. Crear directorio de temas
-+
+*Crear directorio para los temas*
 [source,bash]
 ----
 mkdir ~/.local/share/{themes,icons,fonts}
 ----
 
-. Instalar fuentes
+=== *Fuentes*
+
+*Instalación de Nerd Fonts*
+
+* Puedes descargar cualquiera desde https://www.nerdfonts.com/["Nerd Fonts",window=read-later] y luego instalarla en tu sistema.
+* Copia los archivos .ttf a `~/.local/share/fonts/` y ejecuta `fc-cache -fv`.
+
+=== *Temas*
+
+*Instalación de tema Flat Remix GTK Black*
+
+* Puedes descargar cualquiera desde https://www.xfce-look.org/p/1214931["Flat Remix GTK Black",window=read-later] y luego instalarla en tu sistema.
+
+* Descomprimir
 +
 [source,bash]
 ----
+cd ~/Descargas
+tar -xvf 03-Flat-Remix-GTK-Black-20240730.tar.xz
 ----
 
-. Instalar tema
+* Instalar
 +
 [source,bash]
 ----
+mv Flat-Remix-Dark-XFWM ~/.local/share/themes/
 ----
 
-. Instalar iconos (Flat Remix ICON theme)
+=== *Iconos*
+
+*Instalación de iconos Flat Remix ICON*
+
+* Puedes descargarlo desde https://www.xfce-look.org/p/1012430["Flat Remix ICON theme",window=read-later].
+
+* Descomprimir
 +
 [source,bash]
 ----
-https://www.xfce-look.org/p/1012430
+cd ~/Descargas
+tar -xvf 05-Flat-Remix-Black-20251119.tar.xz
 ----
 
+* Instalar
++
 [source,bash]
 ----
+mv Flat-Remix-Black-Dark ~/.local/share/icons/
 ----
