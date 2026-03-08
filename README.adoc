@@ -1,0 +1,44 @@
+= 🚀 *Mis Dotfiles*
+Prof. Franklin Cedeño Cocho <profesor.franklin.cedeno@gmail.com>
+:date: {fecha}
+:encoding: utf-8
+:lang: es
+:icons: font
+:toc: right
+:toc-title: Índice
+:toclevels: 2
+:sectnums!:
+:doctype: book
+:copyblocks:
+:linkattrs:
+:hide-uri-scheme:
+:experimental:
+:plantuml:
+:figure-caption: Figura
+:example-caption: Ejemplo
+:table-caption: Tabla
+// directorios
+:img: recursos/
+:doc: recursos/
+
+Mis configuraciones personales para mi entorno de desarrollo, basadas en Linux/macOS.
+
+== 🖥️ *Vista Previa*
+![Captura de pantalla](screenshot.png)
+
+== 🛠️ *Componentes*
+* *Shell:* Bash
+* *Terminal:* St
+* *Editor:* Neovim
+* *WM:* xmonad
+
+== 📦 *Instalación*
+1. Clonar el repositorio:
+   `git clone https://github.com/usuario/dotfiles.git ~/.dotfiles`
+2. Instalar con GNU Stow:
+   `cd ~/.dotfiles && stow */`
+
+== ⌨️ *Atajos Clave*
+* kbd:[Mod + Enter] Abrir terminal
+* kbd:[Mod + R] Reiniciar WM
+
