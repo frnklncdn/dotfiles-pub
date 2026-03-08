@@ -1,0 +1,140 @@
+#  ______  ___   _ _  ______
+# / ___\ \/ / | | | |/ /  _ \
+# \___ \\  /| |_| | ' /| | | |
+#  ___) /  \|  _  | . \| |_| |
+# |____/_/\_\_| |_|_|\_\____/
+
+# Date: 2025-03-08
+# Author: Prof. Franklin Cedeño Cocho
+
+#===================================== 󰑓 RESET
+
+super + Escape
+    pkill -USR1 -x sxhkd; \
+    dunstify "sxhkd" "Configuración recargada"
+
+#=====================================  AUDIO
+
+XF86Audio{Mute,LowerVolume,RaiseVolume}
+    set-volumen { toggle, 5%-, 5%+ }
+
+#===================================== 󰃠 BRILLO
+
+XF86MonBrightness{Up,Down}
+    set-brillo {+, -}
+
+#===================================== 󰹑 CAPTURAR PANTALLA
+
+Print; {p,s}
+    f-captura {p,s}
+
+#=====================================  PROGRAMAS
+
+super + p
+    f-menu.sh
+
+#=====================================   TECLADO
+
+Caps-Lock
+    set-bloq-mayus
+
+#=====================================  APARIENCIA
+
+super + o; { a }
+    lxappearance
+
+#=====================================  CALENDARIO
+
+super + o; { c }
+    utils-mostrar-cal
+
+#=====================================   EXPLORADOR DE ARCHIVOS
+
+super + o; { d }
+    f-ir-a -t
+
+#=====================================  EMACS
+
+super + o; { e }
+    emacsclient -c
+
+#=====================================  NAVEGADOR
+
+super + o; { f }
+    firefox
+
+#=====================================  RELOJ
+
+super + o; { h }
+    utils-mostrar-hora
+
+#=====================================   TECLADO LED ON
+
+super + o; { l }
+    xset led on
+
+#=====================================   TECLADO LED OFF
+
+super + o; { L }
+    xset led off
+
+#=====================================  MANUAL
+
+super + o; { m }
+    utils-mostrar-manual
+
+#===================================== 󱡫 SALIDA AUDIO
+
+super + o; { p }
+    pavucontrol
+
+#=====================================   VER WALLPAPERS 
+
+super + o; { s }
+    sxiv -t ~/.local/share/wallpapers/static/
+
+#=====================================   THUNAR
+
+super + o; { T }
+    thunar
+
+#=====================================  TELEGRAM 
+
+super + o; { t }
+    /opt/Telegram/Telegram
+
+#===================================== VERACRYPT
+
+super + o; { v }
+    veracrypt
+
+#===================================== NAVEGADOR ZEN
+
+super + o; { z }
+    zen
+
+#===================================== 󰃁 MARCADORES
+
+super + I
+    f-web-ir -i
+
+#===================================== 󰍺 CAMBIAR MONITOR
+
+super + M
+    set-monitor
+
+#===================================== ⏻ POWER
+
+super + Q
+    sys-sesion.sh
+
+#=====================================  TMUX
+
+super + T
+    f-tmux.sh -v
+
+#===================================== 󰸉 WALLPAPER
+
+super + W
+    set-fondo w
+
