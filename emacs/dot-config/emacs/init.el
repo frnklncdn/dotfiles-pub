@@ -110,7 +110,7 @@
 (setq backup-directory-alist '(("." . "~/.config/emacs/backup")))
 
 ;; Mueve la configuración de variables a un archivo separado
-(setq custom-file "/home/fenix/.config/emacs/custom-vars.el")
+(setq custom-file "~/.config/emacs/custom-vars.el")
 (load custom-file 'noerror 'nomessage)
 
 ;; Tema
