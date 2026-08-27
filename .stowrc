@@ -1,4 +1,5 @@
 --target=$HOME/
 --ignore=.stowrc
---ignore=README.adoc
---ignore=recursos/
+--no-foldin
+--dotfiles
+-v
